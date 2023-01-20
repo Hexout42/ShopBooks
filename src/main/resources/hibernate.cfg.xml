@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-configuration>
+    <session-factory>
+
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/book_shop</property>
+        <property name="connection.username">postgres</property>
+        <property name="connection.password">Qwpo0912</property>
+
+        <property name="connection.pool_size">1</property>
+        <property name="dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
+        <property name="show_sql">true</property>
+        <mapping class="ru.lernup.shopbooks.Db.model.Employee"/>
+        <mapping class="ru.lernup.shopbooks.Db.model.Book"/>
+        <mapping class="ru.lernup.shopbooks.Db.model.OrderConsumer"/>
+        <mapping class="ru.lernup.shopbooks.Db.model.Author"/>
+        <mapping class="ru.lernup.shopbooks.Db.model.Consumer"/>
+        <mapping class="ru.lernup.shopbooks.Db.model.BookHouse"/>
+        <mapping class="ru.lernup.shopbooks.Db.model.DetailsOrder"/>
+
+    </session-factory>
+</hibernate-configuration>
