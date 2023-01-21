@@ -23,7 +23,7 @@ public class ConsumerBuilder {
         Consumer consumer = new Consumer();
         consumer.setAllNameConsumer(allNameConsumer);
         consumer.setBirthDate(birthDate);
-        consumer.setOrderConsumer(orderConsumers);
+        consumer.setOrderConsumer(List.of(orderConsumers));
         return consumer;
     }
 }

@@ -50,7 +50,7 @@ public class DbHelper {
         book.setDetailsOrder(detailsOrder);
         employee.setDetailsOrders(List.of(detailsOrder));
         orderConsumer.setDetailsOrders(List.of(detailsOrder));
-        consumer.setOrderConsumer(orderConsumer);
+        consumer.setOrderConsumer(List.of(orderConsumer));
 
 
 
@@ -63,17 +63,33 @@ public class DbHelper {
         session.save(detailsOrder);
         transaction.commit();
     }
+    public void putAllBookIntoConsumer(int idConsumer){
+        Session  session = sessionFactory.openSession();
+        Query query = session.createQuery("from Consumer t where t.id  = :tbleventId");
+        query.setParameter("tbleventId", idConsumer);
+        List<Consumer> list = query.getResultList();
+        for(int i=0;i<list.size();i++){
+        List<OrderConsumer> orders = list.get(i).getOrderConsumer();
+            for(OrderConsumer order: orders){
+                int j=0;
+                List<DetailsOrder> detailsOrders = order.getDetailsOrders();
+            for (DetailsOrder detailsOrder : detailsOrders){
+                System.out.println(detailsOrder.getIdBook().toString());
+            }
+            }
+        }
+    }
     public void putAllBookIntoOrder(int idOrder){
         Session  session = sessionFactory.openSession();
-        Query query = session.createQuery("from OrderConsumer t where t.id  = :tbleventId");
+        Query query = session.createQuery("from OrderConsumer  t where t.id  = :tbleventId");
         query.setParameter("tbleventId", idOrder);
         List<OrderConsumer> list = query.getResultList();
         for(int i=0;i<list.size();i++){
-        List<DetailsOrder> orders = list.get(i).getDetailsOrders();
-            for(DetailsOrder order: orders){
-            System.out.println(order.getIdBook().toString());
+            List<DetailsOrder> orders = list.get(i).getDetailsOrders();
+            for (DetailsOrder order : orders){
+                System.out.println(order.getIdBook().toString());
             }
-        }
+}
     }
 }
 

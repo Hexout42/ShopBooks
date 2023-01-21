@@ -27,8 +27,8 @@ public class Consumer {
 
     @Column(name = "birth_date")
     private String birthDate;
-    @OneToOne(mappedBy = "consumer")
-    private OrderConsumer orderConsumer;
+    @OneToMany(mappedBy = "consumer")
+    private List<OrderConsumer> orderConsumer;
 
 
 }

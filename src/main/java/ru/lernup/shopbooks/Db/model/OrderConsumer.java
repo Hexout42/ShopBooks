@@ -20,7 +20,7 @@ public class OrderConsumer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @OneToOne()
+    @ManyToOne()
     @JoinColumn(name = "id_consumer")
     private Consumer consumer;
 
